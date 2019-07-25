@@ -34,7 +34,8 @@
             class="img-thumbnail rounded-circle" src="{% static 'images/brand.jpg' %}"> Trang chủ</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+         <img style="height: 50px" src="{% static 'icons/menu.png' %}" alt="">
+         <!-- <span class="navbar-toggler-icon"></span> -->
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
          <ul class="navbar-nav mr-auto">
@@ -43,7 +44,7 @@
                   aria-haspopup="true" aria-expanded="false">
                   Blog
                </a>
-               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{% url 'tag1_list' %}">Kinh nghiệm học tập 
                      <img style="height: 15px" src="{% static 'icons/book.png' %}">
                   </a>
