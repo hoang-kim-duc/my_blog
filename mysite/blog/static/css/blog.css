@@ -1,8 +1,26 @@
+/* base */
+body{
+   background-color: #247BA0
+}
+
+.content{
+   background-color: #EBF2FA;
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+}  
+
+.blog_posts{
+   width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+}
+
 .techfont{
     font-family: 'Lobster', cursive;
     font-size: 1.5em;
     margin-bottom: 10px;
-}
+} 
 
 .bigbrand{
     font-size: 1.5em
@@ -37,10 +55,6 @@
    border: 1px dashed #247BA0
 }
 
-body{
-   background-color: #247BA0
-}
-
 .verticalline {
   border-left: 2px solid #247BA0;
 }
@@ -55,7 +69,8 @@ body{
 }
 
 .blog_posts>p>img{
-   max-width: 500px;
+   width: 500px;
+   max-width: 80%;
    display: block;
    margin-left: auto;
    margin-right: auto;
