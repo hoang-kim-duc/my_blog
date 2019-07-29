@@ -87,6 +87,8 @@
             </li>
          </ul>
          <ul class="navbar-nav navbar-right">
+
+            {% if user.is_authenticated %}
             <li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
@@ -100,8 +102,7 @@
                   <a class="dropdown-item" href="#"></a>
                </div>
             </li>
-
-            {% if user.is_authenticated %}
+            
             <li class="nav-item pr-2 mt-auto mb-auto dropdown">
                <a class="nav-link" href="#" id="NotificationDropdown"
                    role="button" data-toggle="dropdown"
