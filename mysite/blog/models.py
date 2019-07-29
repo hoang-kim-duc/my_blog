@@ -56,3 +56,16 @@ class Event(models.Model):
 
    def __str__(self):
       return self.title
+
+class Notification(models.Model):
+   person = models.CharField(max_length=200)
+   action = models.CharField(max_length=200)
+   post_title = models.CharField(max_length=200)
+   target = models.CharField(max_length=200)
+   id_target = models.IntegerField()
+   time = models.DateTimeField(default=timezone.now)
+   is_read = models.BooleanField(default=False)
+   
+   def __str__(self):
+      template = f'{self.person} {self.action} {self.post_title}'
+      return template

@@ -28,6 +28,25 @@
 </head>
 
 <body>
+   <!-- HEADER -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+   <section class=" align-items-center d-flex bg-dark"
+      style="height:40vh; background-size: cover; background-image: url(http://hdqwalls.com/wallpapers/abstract-lines-4k-5k-colorful-background-ky.jpg);">
+      <div class="container-fluid">
+         <div class="row  justify-content-center align-items-left d-flex text-center h-100">
+            <div class="col-12 col-md-8 mt-4 h-50 ">
+               <h1 class="display-2  text-light mb-auto mt-auto"><strong>HoKiD Blog</strong> </h1>
+               <p class="lead  text-light mb-4">Blog cá nhân, hơi vớ vẩn, không nghiêm túc</p>
+               <!-- <p><a href="https://blueprintsapp.launchaco.com/"
+                     class="btn bg-danger shadow-lg btn-round text-light btn-lg btn-rised">Get More Templates Now ></a></p> -->
+
+            </div>
+   
+         </div>
+      </div>
+   </section>
+
    <!-- NAVBAR -->
    <nav class="navbar navbar-expand-lg bg-light techfont">
       <a class="navbar-brand bigbrand" href="{% url 'post_list' %}"><img style="height: 50px; width: 50px;"
@@ -68,11 +87,45 @@
             </li>
          </ul>
          <ul class="navbar-nav navbar-right">
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Admin
+               </a>
+               <div class="dropdown-menu bg-light" aria-labelledby="adminDropdown">
+                  <a class="dropdown-item" href="{% url 'post_new' %}">New Post</a>
+                  <a class="dropdown-item" href="{% url 'post_draft_list' %}">Drafts</a>
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"></a>
+               </div>
+            </li>
+
             {% if user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'post_new' %}">New Post</a></li>
+            <li class="nav-item pr-2 mt-auto mb-auto dropdown">
+               <a class="nav-link" href="#" id="NotificationDropdown"
+                   role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <img style="height: 30px" src="{% static 'icons/bell.png' %}">
+               </a>
+               <div class="dropdown-menu dropdown-menu-right bg-light rounded" 
+                  aria-labelledby="NotificationDropdown"
+                  style="box-shadow: 2px 2px 3px grey; width: 500px; height:350px; overflow-y: scroll; overflow-x:hidden">
+                  {% for notification in Notification %}
+                  <a href="/{{ notification.target }}/{{ notification.id_target }}/" class="dropdown-item">
+                     <div style=" width: 500px;"><p style=" width:inherit;">{{ notification }}</p></div>
+                     <div class="text-right"><small>{{ notification.time|date:"H:i - d/m"}}</small></div>
+                  </a>
+                  <hr>
+                  {% endfor %}
+               </div>
+
+            </li>
+
+            <!-- <li class="nav-item"><a class="nav-link" href="{% url 'post_new' %}">New Post</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'post_draft_list' %}">Drafts</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-            <li class="nav-item"><a class="nav-link">Welcome: {{user.username}}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li> -->
+            <li class="nav-item"><a class="nav-link">{{user.username}}</a></li>
             {% else %}
             <li class="nav-item "><a class="nav-link" href="{% url 'login' %}">
                <img style="height:25px; width:25px;" src="{% static 'icons/admin.png' %}" alt="">
@@ -97,17 +150,18 @@
                {% endblock content %}
             </div>
          </div>
-
+         <!-- SIDEBAR -->
          <div class="col-lg-3 text-center">
             <div class="sidebar sticky-top">
-               <div class="profile verticalline">
+               <div class="profile pr-2 pl-2 verticalline">
+                  <hr class='d-lg-none'>
                   <img class="w-50 rounded border border-warning" src="{% static 'images/brand.jpg' %}" alt=""><br>
                   <b class="bigbrand">Hoàng Kim Đức</b> <br>
                   <em><small>Trưởng ban Chuyên Môn tại JS Club</small></em>
                   <p>Mình là một coder newbie, đang đua đòi học web. Ngủ 23h và dậy 6h sáng tập thể dục</p>
                   <hr>
                   <p>--- CONTACT ---<br>
-                     <small>Email: hoangkimduclqd@gmail.com</small>
+                     <small>Email: hoangkimduclqd@gmail.com</small><br>
                      <small>Phone: 0948 692 350</small>
                      <div>
                         <a style="display: inline;" class="nav-link" href="https://www.facebook.com/hokiduc">
