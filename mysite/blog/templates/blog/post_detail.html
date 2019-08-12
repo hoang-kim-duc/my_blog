@@ -1,4 +1,9 @@
 {% extends "blog/base.html" %}
+
+{% block title %}
+{{ post_detail.title }}
+{% endblock title %}
+
 {% block content %}
 
    <h1 class="posttitle loader">{{post_detail.title}}</h1>

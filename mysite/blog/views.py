@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (TemplateView,ListView,
                                     DetailView,CreateView,
-                                    UpdateView,DeleteView)
+                                  UpdateView, DeleteView)
 
 # Create your views here.
 
@@ -23,6 +23,7 @@ class DetailView(DetailView):
         ctx = super(DetailView, self).get_context_data(**kwargs)
         ctx['Notification'] = Notification.objects.order_by('-time')
         return ctx
+   
 
 
 class TemplateView(TemplateView):
@@ -64,6 +65,7 @@ class Tag3ListView(ListView):
 class PostDetailView(DetailView):
    context_object_name = 'post_detail'
    model = Post
+
 
 class CreatePostView(LoginRequiredMixin,CreateView):
    login_url = 'login/'
