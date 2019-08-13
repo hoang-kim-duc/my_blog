@@ -67,6 +67,16 @@ class PostDetailView(DetailView):
    model = Post
 
 
+   def get_object(self):
+      post = super().get_object()
+      if not self.request.user.is_authenticated:
+         post.increase_view()
+      return post
+      
+
+   
+
+
 class CreatePostView(LoginRequiredMixin,CreateView):
    login_url = 'login/'
    redirect_field_name = 'blog/post_detail.html'
@@ -96,12 +106,6 @@ class DraftListView(LoginRequiredMixin,ListView):
 
 ################################
 ################################
-def increase_view(request, pk):
-   post = get_object_or_404(Post, pk=pk)
-   post_pk = post.pk
-   post.increase_view()
-   return redirect('post_detail', pk=post_pk)
-
 
 @login_required
 def post_publish(request,pk):

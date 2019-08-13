@@ -59,8 +59,4 @@ urlpatterns = [
    path('post/<int:pk>/publish',
       views.post_publish,
       name='post_publish'),
-
-   path('post/<int:pk>/increase_view/',
-      views.increase_view,
-      name='increase_view'),
 ]
