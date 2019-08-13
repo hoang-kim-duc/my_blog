@@ -9,11 +9,23 @@ HoKiDu Blog
    {% for post in post_list %}
    <br>
    <div class="post p-3 bg-light">
+      {% if user.is_authenticated %}
+      <!-- If it is user, dont increase view -->
       <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
       <div class="date">
-            <p>Published on: {{post.published_date|date:"G:i D, d M, Y"}}</p>
+         <p>Published on: {{post.published_date|date:"G:i D, d M, Y"}}</p>
       </div>
-         <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+      
+      <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+      {% else %}
+      <!-- if this is not an user, increase view -->
+      <h1><a href="{% url 'increase_view' pk=post.pk %}">{{post.title}}</a></h1>
+      <div class="date">
+         <p>Published on: {{post.published_date|date:"G:i D, d M, Y"}}</p>
+      </div>
+      <a href="{% url 'increase_view' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+      {% endif %}
+
    </div>
    {% endfor %}
 </div>

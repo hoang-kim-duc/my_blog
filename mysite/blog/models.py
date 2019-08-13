@@ -13,7 +13,11 @@ class Post(models.Model):
    create_date = models.DateTimeField(default=timezone.now)
    published_date = models.DateTimeField(blank=True,null=True)
    tag = models.CharField(choices=tag_list, max_length=20, default='tag1')
-   view = models.IntegerField(default=0)
+   view = models.IntegerField()
+
+   def increase_view(self):
+      self.view = self.view + 1
+      self.save()
 
    def publish(self):
       self.published_date = timezone.now()
@@ -26,8 +30,6 @@ class Post(models.Model):
       return self.comments.filter(approved_comment=True)
 
    def get_absolute_url(self):
-      self.view = self.view + 1
-      self.save()
       return reverse("post_detail",kwargs={'pk':self.pk})
 
    def __str__(self):
