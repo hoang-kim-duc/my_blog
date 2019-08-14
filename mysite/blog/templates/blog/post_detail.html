@@ -1,5 +1,9 @@
    {% extends "blog/base.html" %}
 
+   {% block sharebutton %}
+      <meta property="og:image" content="/static/images/base/preview.jpg" />
+   {% endblock sharebutton %}
+
    {% block title %}
    {{ post_detail.title }}
    {% endblock title %}
@@ -14,17 +18,19 @@
       <div class="date postdate">
          {{ post_detail.published_date|date:"G:i D, d M, Y" }}
       </div>
+      <!-- Facebook share button -->
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous"
+         src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0"></script>
+      <div class="fb-share-button" data-href="{% url 'post_detail' pk=post_detail.pk  %}" data-layout="button_count"
+         data-size="small"><a target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+            class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+      <!-- End of facebook share button code -->
+
    {% else %}
       <a href="{% url 'post_publish' pk=post_detail.pk  %}" class="btn btn-info">Publish</a>
    {% endif %}
-
-   <div id="fb-root"></div>
-   <script async defer crossorigin="anonymous"
-      src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0"></script>
-   <div class="fb-share-button" data-href="{% url 'post_detail' pk=post_detail.pk %}" data-layout="button"
-      data-size="large"><a target="_blank"
-         href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-         class="fb-xfbml-parse-ignore">Chia sẻ</a></div> <br>
 
    <p class="postcontent">{{post_detail.text|safe|linebreaksbr}}</p>
 
