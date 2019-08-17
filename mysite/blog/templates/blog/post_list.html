@@ -6,6 +6,10 @@ HoKiDu Blog
 
 {% block content %}
 <div class="centerstage">
+   <div style="background-color: #E6EBE0;" class="p-4 rounded">
+         {{ Description.text|safe }}
+   </div>
+
    {% for post in post_list %}
    <br>
    <div class="post p-3 bg-light">

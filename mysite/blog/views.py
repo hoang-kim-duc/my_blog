@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.utils import timezone
-from blog.models import Post,Comment,Notification
+from blog.models import Post,Comment,Notification,Description
 from blog.forms import PostForm,CommentForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -42,11 +42,22 @@ class PostListView(ListView):
 
    def get_queryset(self):
       return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+   
+   def get_context_data(self, **kwargs):
+      ctx = super(ListView, self).get_context_data(**kwargs)
+      ctx['Description'] = Description.objects.get(pk=4)
+      return ctx
+
 
 class Tag1ListView(ListView):
    model = Post
    def get_queryset(self):
       return Post.objects.filter(published_date__lte=timezone.now(),tag='tag1').order_by('-published_date')
+
+   def get_context_data(self, **kwargs):
+      ctx = super(ListView, self).get_context_data(**kwargs)
+      ctx['Description'] = Description.objects.get(pk=1)
+      return ctx
 
 
 class Tag2ListView(ListView):
@@ -55,12 +66,23 @@ class Tag2ListView(ListView):
    def get_queryset(self):
       return Post.objects.filter(published_date__lte=timezone.now(), tag='tag2').order_by('-published_date')
 
+   def get_context_data(self, **kwargs):
+      ctx = super(ListView, self).get_context_data(**kwargs)
+      ctx['Description'] = Description.objects.get(pk=2)
+      return ctx
+
 
 class Tag3ListView(ListView):
    model = Post
 
    def get_queryset(self):
       return Post.objects.filter(published_date__lte=timezone.now(), tag='tag3').order_by('-published_date')
+
+   def get_context_data(self, **kwargs):
+      ctx = super(ListView, self).get_context_data(**kwargs)
+      ctx['Description'] = Description.objects.get(pk=3)
+      return ctx
+
 
 class PostDetailView(DetailView):
    context_object_name = 'post_detail'

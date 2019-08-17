@@ -77,3 +77,10 @@ class Notification(models.Model):
    def __str__(self):
       template = f'{self.person} {self.action} {self.post_title}'
       return template
+
+
+class Description(models.Model):
+   text = models.TextField()
+
+   def __str__(self):
+      return self.id
