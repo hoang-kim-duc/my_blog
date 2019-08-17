@@ -45,7 +45,6 @@ body {
 
 .postcontent {
    font-family: 'Noto Sans', sans-serif;
-   font-size: 2em;
 }
 
 .btn-comment {
@@ -132,7 +131,6 @@ body {
 }
 
 body {
-   display: flex;
    flex-direction: column;
 }
 

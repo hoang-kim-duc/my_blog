@@ -11,11 +11,12 @@ HoKiDu Blog
    <div class="post p-3 bg-light">
       <!-- if this is not an user, increase view -->
       <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
-      <div class="date">
+      <div class="blog_posts date">
          <p>Published on: {{post.published_date|date:"G:i D, d M, Y"}}</p>
+         <p class="postcontent">{{ post.text|safe|linebreaksbr|truncatechars:256 }}</p>
       </div>
       <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
-   </div>
+   </div>   
    {% endfor %}
 </div>
 {% endblock content %}
