@@ -13,7 +13,7 @@ class Post(models.Model):
    create_date = models.DateTimeField(default=timezone.now)
    published_date = models.DateTimeField(blank=True,null=True)
    tag = models.CharField(choices=tag_list, max_length=20, default='tag1')
-   view = models.IntegerField()
+   view = models.IntegerField(default=0)
 
    def increase_view(self):
       self.view = self.view + 1

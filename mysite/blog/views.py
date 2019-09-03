@@ -46,6 +46,7 @@ class PostListView(ListView):
    def get_context_data(self, **kwargs):
       ctx = super(ListView, self).get_context_data(**kwargs)
       ctx['Description'] = Description.objects.get(pk=4)
+      ctx['Notification'] = Notification.objects.order_by('-time')
       return ctx
 
 
@@ -57,6 +58,7 @@ class Tag1ListView(ListView):
    def get_context_data(self, **kwargs):
       ctx = super(ListView, self).get_context_data(**kwargs)
       ctx['Description'] = Description.objects.get(pk=1)
+      ctx['Notification'] = Notification.objects.order_by('-time')
       return ctx
 
 
@@ -69,6 +71,7 @@ class Tag2ListView(ListView):
    def get_context_data(self, **kwargs):
       ctx = super(ListView, self).get_context_data(**kwargs)
       ctx['Description'] = Description.objects.get(pk=2)
+      ctx['Notification'] = Notification.objects.order_by('-time')
       return ctx
 
 
@@ -81,6 +84,7 @@ class Tag3ListView(ListView):
    def get_context_data(self, **kwargs):
       ctx = super(ListView, self).get_context_data(**kwargs)
       ctx['Description'] = Description.objects.get(pk=3)
+      ctx['Notification'] = Notification.objects.order_by('-time')
       return ctx
 
 
@@ -95,9 +99,6 @@ class PostDetailView(DetailView):
          post.increase_view()
       return post
       
-
-   
-
 
 class CreatePostView(LoginRequiredMixin,CreateView):
    login_url = 'login/'

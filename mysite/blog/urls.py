@@ -8,11 +8,11 @@ urlpatterns = [
       views.PostListView.as_view(),
       name='post_list'),
 
-   path('kinh-nghiem-hoc-tap/',
+   path('kinh-nghiem-ca-nhan/',
          views.Tag1ListView.as_view(),
          name='tag1_list'),
 
-   path('chuyen-yeu-duong/',
+   path('chu-de-cong-nghe/',
          views.Tag2ListView.as_view(),
          name='tag2_list'),
 

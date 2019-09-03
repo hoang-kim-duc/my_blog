@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+
 {% block content %}
    <h1>New Post:</h1>
    <form method="POST" class="post-form">
@@ -6,13 +7,16 @@
       {{form.as_p}}
       <button class="save btn btn-info" type="submit">Save</button>
    </form>
-   <script src="../dist/js/medium-editor.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.23.3/js/medium-editor.js"></script>
    <script>
-      var editor = new MediumEditor('.editable', {
-         toolbar: {
-            buttons: ['bold', 'italic', 'underline', 'strikethrough', 'quote', 'anchor', 'image', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'superscript', 'subscript', 'orderedlist', 'unorderedlist', 'pre', 'outdent', 'indent', 'h2', 'h3'],
-            relativeContainer: document.getElementById('someRelativeDiv')
-         }
-      });
+         var editor = new MediumEditor('.editable', {
+            toolbar: {
+               buttons: ['bold', 'italic', 'underline', 'strikethrough', 'quote', 'anchor', 'image', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'superscript', 'subscript', 'orderedlist', 'unorderedlist', 'pre', 'removeFormat', 'outdent', 'indent', 'h2', 'h3', 'html'],
+            },
+            buttonLabels: 'fontawesome',
+            anchor: {
+               targetCheckbox: true
+            }
+         });
    </script>
 {% endblock content %}

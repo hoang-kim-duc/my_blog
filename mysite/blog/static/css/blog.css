@@ -69,9 +69,8 @@ body {
    padding-top: 20%
 }
 
-.blog_posts>p>img {
-   width: 500px;
-   max-width: 80%;
+.blog_posts img {
+   max-width: 85%;
    display: block;
    margin-left: auto;
    margin-right: auto;
@@ -140,4 +139,15 @@ body {
 
 .footer {
    flex-shrink: 0;
+}
+
+/* Medium editor */
+blockquote {
+   display: block;
+   padding-left: 20px;
+   border-left: 6px solid #df0d32;
+   margin-left: -15px;
+   padding-left: 15px;
+   font-style: italic;
+   color: #555;
 }
