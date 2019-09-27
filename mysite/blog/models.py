@@ -5,7 +5,9 @@ from django.urls import reverse
 # Create your models here.
 tag_list = (('tag1','Kinh nghiệm học tập'),
             ('tag2','Chủ đề công nghệ'),
-            ('tag3','Linh tinh cá nhân'),)
+            ('tag3','Linh tinh cá nhân'),
+            ('tag4','Công cuộc reviewer'),
+            )
 class Post(models.Model):
    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
    title = models.CharField(max_length=200)
