@@ -10,7 +10,7 @@ Hoang Kim Duc
          {{ Description.text|safe }}
    </div>
 
-   {% for post in post_list %}
+   {% for post in page_obj %}
    <br>
    <div class="post p-3 bg-light">
       <!-- if this is not an user, increase view -->
@@ -22,5 +22,31 @@ Hoang Kim Duc
       <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
    </div>   
    {% endfor %}
+
+  {% if page_obj.paginator.num_pages != 1 %}
+  <nav aria-label="navigation">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">First</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">{{page_obj.previous_page_number}}</a></li>
+      {% endif %} 
+      <li class="page-item active"><a class="page-link" href="?page={{page_obj.number}}">{{page_obj.number}}</a></li>
+      {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">{{page_obj.next_page_number}}</a></li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{page_obj.paginator.num_pages}}">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Last</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
 </div>
 {% endblock content %}

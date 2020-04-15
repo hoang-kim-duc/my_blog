@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (TemplateView,ListView,
                                     DetailView,CreateView,
                                   UpdateView, DeleteView)
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -37,7 +38,7 @@ class AboutView(TemplateView):
    template_name = 'blog/about.html'
 
 class PostListView(ListView):
-   context_object_name = 'post_list'
+   paginate_by = 3
    model = Post
 
    def get_queryset(self):
@@ -51,6 +52,7 @@ class PostListView(ListView):
 
 
 class Tag1ListView(ListView):
+   paginate_by = 3
    model = Post
    def get_queryset(self):
       return Post.objects.filter(published_date__lte=timezone.now(),tag='tag1').order_by('-published_date')
@@ -63,6 +65,7 @@ class Tag1ListView(ListView):
 
 
 class Tag2ListView(ListView):
+   paginate_by = 3
    model = Post
 
    def get_queryset(self):
@@ -76,6 +79,7 @@ class Tag2ListView(ListView):
 
 
 class Tag3ListView(ListView):
+   paginate_by = 3
    model = Post
 
    def get_queryset(self):
@@ -87,6 +91,19 @@ class Tag3ListView(ListView):
       ctx['Notification'] = Notification.objects.order_by('-time')
       return ctx
 
+
+class Tag4ListView(ListView):
+   paginate_by = 3
+   model = Post
+
+   def get_queryset(self):
+      return Post.objects.filter(published_date__lte=timezone.now(), tag='tag4').order_by('-published_date')
+
+   def get_context_data(self, **kwargs):
+      ctx = super(ListView, self).get_context_data(**kwargs)
+      ctx['Description'] = Description.objects.get(pk=3)
+      ctx['Notification'] = Notification.objects.order_by('-time')
+      return ctx
 
 class PostDetailView(DetailView):
    context_object_name = 'post_detail'

@@ -2,12 +2,14 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
+
 # Create your models here.
 tag_list = (('tag1','Kinh nghiệm học tập'),
             ('tag2','Chủ đề công nghệ'),
             ('tag3','Linh tinh cá nhân'),
             ('tag4','Công cuộc reviewer'),
-            )
+)
+
 class Post(models.Model):
    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
    title = models.CharField(max_length=200)
@@ -26,8 +28,6 @@ class Post(models.Model):
       self.save()
 
    # def increase_view(self):
-
-
    def approve_comments(self):
       return self.comments.filter(approved_comment=True)
 

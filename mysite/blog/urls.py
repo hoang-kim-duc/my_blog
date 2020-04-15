@@ -20,6 +20,10 @@ urlpatterns = [
          views.Tag3ListView.as_view(),
          name='tag3_list'),
 
+   path('Cong-cuoc-reviewer/',
+         views.Tag4ListView.as_view(),
+         name='tag4_list'),
+
    path('about/',
       views.AboutView.as_view(),
       name='about'),

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 <html lang="en" dir="ltr">
 <head>
    <meta charset="utf-8">
@@ -36,8 +36,7 @@
 <body>
    <!-- HEADER -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   
-   <section class=" align-items-center d-flex bg-dark"
+   <section class="d-none d-xl-flex align-items-center bg-dark"
       style="height:25vmin; background-size: cover; background-image: url(/static/images/base/header.jpg);">
       <div class="container-fluid">
          <div class="row  justify-content-center align-items-left d-flex text-center h-100">
@@ -45,7 +44,7 @@
                <h1 class="display-2  text-light mb-auto mt-auto"><strong>Hoang Kim Duc Blog</strong> </h1>
                <p class="lead  text-light mb-4">Blog cá nhân - Góc chia sẻ của mình</p>
             </div>
-   
+
          </div>
       </div>
    </section>
@@ -84,7 +83,7 @@
                   <a class="dropdown-item" href="{% url 'tag3_list' %}">Linh tinh cá nhân
                      <img style="height: 15px" src="{% static 'icons/personal.png' %}">
                   </a>
-                  <a class="dropdown-item" href="{% url 'tag3_list' %}">Công cuộc reviewer
+                  <a class="dropdown-item" href="{% url 'tag4_list' %}">Công cuộc reviewer
                      <img style="height: 15px" src="{% static 'icons/review.png' %}">
                   </a>
                </div>
@@ -109,14 +108,14 @@
                   <a class="dropdown-item" href="#"></a>
                </div>
             </li>
-            
+
             <li class="nav-item pr-2 mt-auto mb-auto dropdown">
                <a class="nav-link" href="#" id="NotificationDropdown"
                    role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   <img style="height: 30px" src="{% static 'icons/bell.png' %}">
                </a>
-               <div class="dropdown-menu dropdown-menu-right bg-light rounded" 
+               <div class="dropdown-menu dropdown-menu-right bg-light rounded"
                   aria-labelledby="NotificationDropdown"
                   style="box-shadow: 2px 2px 3px grey; width: 500px; height:350px; overflow-y: scroll; overflow-x:hidden">
                   {% for notification in Notification %}
@@ -136,12 +135,8 @@
             </a></li>
             {% endif %}
          </ul>
-         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search (coming soon)" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-         </form>
       </div>
-      
+
    </nav>
    <!-- CONTENT BODY -->
 
@@ -150,13 +145,13 @@
          <div class="col-lg-9">
             <div class="blog_posts">
                {% block content %}
-         
+
                {% endblock content %}
             </div>
          </div>
          <!-- SIDEBAR -->
-         <div class="col-lg-3 text-center">
-            <div class="sidebar sticky-top">
+         <div class="col-lg-3 text-center ">
+            <div class="sticky-top sidebar">
                <div class="profile pr-2 pl-2 verticalline">
                   <hr class='d-lg-none'>
                   <img class="w-50 rounded border border-warning" src="{% static 'images/base/icon.jpg' %}" alt=""><br>
@@ -179,9 +174,6 @@
                      </div>
                   </p>
                   <hr>
-                  <a class="dropdown-item" href="#">Gửi tâm tư cho HKĐ
-                     <img style="height: 15px" src="{% static 'icons/letter.png' %}">
-                  </a>
                </div>
             </div>
          </div>
@@ -191,7 +183,7 @@
 
    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
       <div class="container text-center">
-         <small>Đây là project web đầu tiên mình tự làm. Được làm bởi Django, Jquery, Bootstrap
+         <small>Đây là blog và cũng là web project đầu tiên mình làm.
             <br>Copyright &copy; Power by Hoàng Kim Đức</small>
       </div>
    </footer>
