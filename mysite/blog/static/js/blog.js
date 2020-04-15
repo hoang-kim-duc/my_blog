@@ -1,6 +1,7 @@
 function toggleOfSideBar() {
     var sb = document.getElementsByClassName("sidebar")[0];
-    if (sb.style.display == "none") {
+    var a = document.getElementsByClassName("show");
+    if (a.length == 0) {
         sb.style.display = "block";
     } else {
         sb.style.display = "none";
