@@ -12,7 +12,11 @@ body {
     }
 }
 
-.content img {
+img {
+    width: 98%;
+}
+
+.content {
     background-color: #EBF2FA;
     width: 98%;
     margin-left: auto;
