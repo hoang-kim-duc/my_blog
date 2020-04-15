@@ -1,16 +1,29 @@
 /* base */
 
 body {
+    font-size: 1.5rem;
     background-color: #247BA0;
     /* background-image: url(http://hdqwalls.com/wallpapers/abstract-lines-4k-5k-colorful-background-ky.jpg); */
 }
 
+@media only screen and (min-width: 768px) {
+    body {
+        font-size: 1rem;
+    }
+}
+
 .content {
     background-color: #EBF2FA;
-    width: 90%;
+    width: 98%;
     margin-left: auto;
     margin-right: auto;
     padding-top: 0.5%;
+}
+
+@media only screen and (min-width: 768px) {
+    .content {
+        width: 90%;
+    }
 }
 
 .blog_posts {
@@ -21,12 +34,12 @@ body {
 
 .techfont {
     font-family: 'Lobster', cursive;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
 .bigbrand {
-    font-size: 1.5em
+    font-size: 1.5rem
 }
 
 .centerstage {
@@ -40,7 +53,7 @@ body {
 
 .posttitle {
     font-family: 'Lobster', cursive;
-    font-size: 3em;
+    font-size: 3rem;
     text-align: center;
 }
 
@@ -66,11 +79,15 @@ body {
     padding-bottom: 5%;
 }
 
-.blog_posts img {
-    max-width: 85%;
+.blog_posts {
+    max-width: 90%;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.dropdown-menu {
+    position: absolute;
 }
 
 
@@ -80,36 +97,6 @@ body {
     filter: hue-rotate(0deg);
     color: linear-gradient(45deg, #0f8, #08f);
     animation: hue 10000ms infinite linear;
-}
-
-@keyframes spinify {
-    0% {
-        transform: translate(0px, 0px);
-    }
-    33% {
-        transform: translate(0px, 24px);
-        border-radius: 100%;
-        width: 10px;
-        height: 10px;
-    }
-    66% {
-        transform: translate(0px, -16px);
-    }
-    88% {
-        transform: translate(0px, 4px);
-    }
-    100% {
-        transform: translate(0px, 0px);
-    }
-}
-
-@keyframes hue {
-    0% {
-        filter: hue-rotate(0deg);
-    }
-    100% {
-        filter: hue-rotate(360deg);
-    }
 }
 
 
@@ -131,6 +118,9 @@ body {
 .footer {
     flex-shrink: 0;
 }
+
+
+/* sidebar */
 
 .sidebar {
     padding-top: 15vh;

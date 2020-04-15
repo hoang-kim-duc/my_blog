@@ -2,6 +2,7 @@
 {% load static %}
 <html lang="en" dir="ltr">
 <head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta charset="utf-8">
    {% block sharebutton %}
    {% endblock sharebutton %}
@@ -29,6 +30,7 @@
       media="screen" charset="utf-8">
    <!-- Custom CSS -->
    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+   <script src="{% static 'js/blog.js' %}"></script>
    <!-- Fonts -->
    <link href="https://fonts.googleapis.com/css?family=Lobster|Noto+Sans&display=swap" rel="stylesheet">
 </head>
@@ -112,7 +114,7 @@
             <li class="nav-item pr-2 mt-auto mb-auto dropdown">
                <a class="nav-link" href="#" id="NotificationDropdown"
                    role="button" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
+                  onclick = "toggleOfSideBar()">
                   <img style="height: 30px" src="{% static 'icons/bell.png' %}">
                </a>
                <div class="dropdown-menu dropdown-menu-right bg-light rounded"
@@ -150,8 +152,8 @@
             </div>
          </div>
          <!-- SIDEBAR -->
-         <div class="col-lg-3 text-center ">
-            <div class="sticky-top sidebar">
+         <div class="col-lg-3 text-center" style="position: static">
+            <div class="sidebar sticky-top">
                <div class="profile pr-2 pl-2 verticalline">
                   <hr class='d-lg-none'>
                   <img class="w-50 rounded border border-warning" src="{% static 'images/base/icon.jpg' %}" alt=""><br>
